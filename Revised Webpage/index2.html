@@ -25,11 +25,38 @@
   </section>
 
   <!-- MAIN CONTENT: Recipe Display -->
-  <section class="main">
-    <h2>Recipe Name</h2>
-    <img src="images/recipe-placeholder.png" alt="Recipe Image" class="recipe-image">
-    <p>Here is where the main recipe content will go. To come: ingredients, steps!</p>
-  </section>  
+  <h2>Recipes</h2>
+  
+  <!-- Recipe Template -->
+  <template id="recipe-template">
+    <div class="recipe">
+      <h3 class="recipe-title"></h3>
+      <img class="recipe-image" src="" alt="">
+      <p class="recipe-description"></p>
+    </div>
+  </template>
+
+  <!-- Recipe Container -->
+  <div id="recipe-container"></div>
+</main>
+
+<script src="data_content.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById("recipe-container");
+    const template = document.getElementById("recipe-template").content;
+
+    contentData.recipes.forEach(recipe => {
+      const clone = template.cloneNode(true);
+      clone.querySelector(".recipe-title").textContent = recipe.title;
+      clone.querySelector(".recipe-image").src = recipe.image;
+      clone.querySelector(".recipe-image").alt = recipe.title;
+      clone.querySelector(".recipe-description").textContent = recipe.description;
+
+      container.appendChild(clone);
+    });
+  });
+</script>
 
   <!-- LEFT SIDEBAR: Adjustments Section -->
   <section class="left">
