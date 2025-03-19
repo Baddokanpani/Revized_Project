@@ -1,4 +1,4 @@
-const data = {
+const contentData = {
     recipes: [
         {
             title: "Chicken Parm",
